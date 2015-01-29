@@ -1,0 +1,12 @@
+{
+  "name": "FootballWagesTranslate",
+  "version": "0.0.1",
+  "description": "Converts a XLS spreadsheet from Journalists into a JSON for the web app",
+  "author": {
+    "name": "fewstera",
+    "email": "aidan.fewster@bbc.co.uk"
+  },
+  "devDependencies": {
+    "excel-parser": "~0.2.2 "
+  }
+}
