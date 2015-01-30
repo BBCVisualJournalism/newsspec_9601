@@ -60,12 +60,15 @@ $sepWidth: 62px;
 				float: right;
 
 				.chart--header{
+					display: block;
+					height: 20px;
 					margin: 0;
 					font-size: 1.4em;
 					font-weight: bold;
 				}
 
 				.chart-bar{
+					transition: all 1.5s ease 0s;
 					margin: 8px 0;
 				}
 			}
@@ -96,8 +99,8 @@ $sepWidth: 62px;
 					background-color: #cce5e5;
 				}
 
-				.chart__active{
-					background-color: #007f7f;
+				.chart--bar__active{
+					background-color: #007f7f !important;
 				}
 			}
 
@@ -126,8 +129,8 @@ $sepWidth: 62px;
 					background-color: #cce5e5;
 				}
 
-				.chart__active{
-					background-color: #007f7f;
+				.chart--bar__active{
+					background-color: #007f7f !important;
 				}
 			}
 		}
@@ -138,8 +141,8 @@ $sepWidth: 62px;
 
 			.charts--seperator{
 				width: $sepWidth;
-				margin: 24px 0 0 (-$sepWidth/2);
-				height: 445px;
+				margin: 29px 0 0 (-$sepWidth/2);
+				height: 440px;
 
 				position: relative;
 
@@ -160,6 +163,7 @@ $sepWidth: 62px;
 				}
 
 				.exports-line{
+					transition: all 1s ease 0s;
 					left: 4px;
 				}
 
@@ -174,7 +178,5 @@ $sepWidth: 62px;
 				}
 			}
 		}
-
 	}
-
 }
