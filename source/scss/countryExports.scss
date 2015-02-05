@@ -10,11 +10,13 @@ $sepWidth: 62px;
 	.country--label{
 		font-size: 2.0em;
 		font-weight: bold;
+		line-height: 2em;
 	}
 
 	.country--input{
-		margin-left: 10px;
-		width: 300px;
+		display: block;
+		margin:0;
+		width: 100%;
 		padding:8px 8px;
 		font-size: 2.0em;
 		border-radius:0;
@@ -26,6 +28,12 @@ $sepWidth: 62px;
 		background:#fff url(../img/dropdown.png) center right no-repeat;
 	}
 
+	.chart--header__long{
+		margin: 1em 0 -20px;
+		font-size: 1.4em;
+		font-weight: bold;
+	}
+
 	.charts{
 		overflow: hidden;
 		height: 470px;
@@ -34,13 +42,14 @@ $sepWidth: 62px;
 		.chart{
 			height: 470px;
 			float: left;
-			width: 50%;
+			max-width: 300px;
+			width: 100%;
 			position: relative;
 
 			.chart--labels{
 				display: block;
 				position: absolute;
-				top: 0;
+				top: -20px;
 
 				padding: 0;
 				margin: 0;
@@ -51,6 +60,10 @@ $sepWidth: 62px;
 					font-size: 1.4em;
 					display: block;
 				}
+
+				.chart--label__active{
+					color: #404040;
+				}
 			}
 
 			.chart-bars{
@@ -60,7 +73,7 @@ $sepWidth: 62px;
 				float: right;
 
 				.chart--header{
-					display: block;
+					display: none;
 					height: 20px;
 					margin: 0;
 					font-size: 1.4em;
@@ -75,6 +88,7 @@ $sepWidth: 62px;
 		}
 
 		.chart__exporters{
+			display: none;
 			padding-right: 36px;
 			text-align: right;
 
@@ -83,8 +97,15 @@ $sepWidth: 62px;
 				right: $barWidth + $sepWidth/2;
 
 				li{
+					cursor: pointer;
+					color: #a0a0a0;
+					transition: all 1.5s ease 0s;
 					right: 0;
 					padding-right: 8px; 
+				}
+
+				.hover-state{
+					color: #404040;
 				}
 			}
 
@@ -96,12 +117,16 @@ $sepWidth: 62px;
 				right: $sepWidth/2;
 
 				.chart-bar{
+					cursor: pointer;
 					background-color: #cce5e5;
 				}
-
+				.hover-state{
+					background-color: #004C4C !important;
+				}
 				.chart--bar__active{
 					background-color: #007f7f !important;
 				}
+
 			}
 
 		}
@@ -110,7 +135,7 @@ $sepWidth: 62px;
 
 			.chart--labels{
 				right: 0;
-				left: $barWidth + $sepWidth/2;
+				left: $barWidth;
 
 				li{
 					left: 0;
@@ -123,7 +148,7 @@ $sepWidth: 62px;
 			}
 
 			.chart-bars{
-				left: $sepWidth/2;
+				left: 0;
 
 				.chart-bar{
 					background-color: #cce5e5;
@@ -136,6 +161,7 @@ $sepWidth: 62px;
 		}
 
 		.charts--seperator-outer{
+			display: none;
 			width: $sepWidth;
 			margin-left: 50%;
 
@@ -176,6 +202,58 @@ $sepWidth: 62px;
 					right: 4px;
 					bottom: 0;
 				}
+			}
+		}
+	}
+
+	.fast-transition {
+		transition: all 0.3s ease 0s !important;
+	}
+}
+
+
+@include respondMinMax(720px, false){
+	.country-export{
+
+		.country--input{
+			display: inline-block;
+			margin-left: 10px;
+			max-width: 300px;
+		}
+
+		.chart--header__long{
+			display: none;
+		}
+		.charts {
+			.chart{
+				width: 50%;
+				max-width: initial;
+
+				.chart-bars .chart--header{
+					display: block;
+				}
+
+				.chart--labels{
+					top: 0;
+				}
+			}
+			.chart__exporters{
+				display: block;
+			}
+			.chart__importers{
+				display: block;
+
+				.chart--labels{
+					left: $barWidth + $sepWidth/2;
+				}
+
+				.chart-bars{
+					left: $sepWidth/2;
+				}
+			}
+
+			.charts--seperator-outer{
+				display: block;
 			}
 		}
 	}

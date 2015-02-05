@@ -5,17 +5,14 @@ define(['lib/news_special/bootstrap'], function (news) {
         this.el = el;
         this.colors = colors;
         this.header = header;
+        this.headerLong = '';
     }
 
     Chart.prototype = {
 
-        setData: function (data, total) {
+        setData: function (data) {
             this.data = data;
-            this.total = total;
-
-            if (!this.total) {
-                this.updateTotal();
-            }
+            this.updateTotal();
 
             return this;
         },

@@ -4,6 +4,7 @@ define(['lib/news_special/bootstrap', 'data/data', 'chart', 'lib/vendors/bind-po
         /* REUSABLE PROPERTIES */
         this.el = $('.country-export');
         this.exportersEl = this.el.find('.country--input');
+        this.chartLabelEl = this.el.find('.chart--header__long');
         this.exporterChartEl = this.el.find('.chart__exporters');
         this.importerChartEl = this.el.find('.chart__importers');
         this.seperatorLineEl = this.el.find('.charts--seperator .exports-line');
@@ -21,6 +22,17 @@ define(['lib/news_special/bootstrap', 'data/data', 'chart', 'lib/vendors/bind-po
 
         /* LISTENERS */
         this.exportersEl.on('change', this.updateCharts.bind(this));
+
+        this.exporterBars = this.exporterChartEl.find('.chart-bar');
+        this.exporterLabels = this.exporterChartEl.find('.chart--labels li');
+
+        this.exporterBars.on('mouseover', this.exportItemHover.bind(this));
+        this.exporterBars.on('mouseout', this.exportItemMouseout.bind(this));
+        this.exporterBars.on('click', this.exportItemClick.bind(this));
+
+        this.exporterLabels.on('mouseover', this.exportItemHover.bind(this));
+        this.exporterLabels.on('mouseout', this.exportItemMouseout.bind(this));
+        this.exporterLabels.on('click', this.exportItemClick.bind(this));
         
     }
 
@@ -70,11 +82,43 @@ define(['lib/news_special/bootstrap', 'data/data', 'chart', 'lib/vendors/bind-po
             });
         },
         updateCharts: function () {
+            this.el.find('.fast-transition').removeClass('fast-transition');
+
             var exporterVal = this.exportersEl.val();
             var country = this.exporterChart.setActive(exporterVal);
             this.seperatorLineEl.css('top', country.seperatorPosition + 'px');
             var orderedImoporters = this.getOrderedImportersFrom(country.name);
             this.importerChart.setData(orderedImoporters).draw();
+
+            this.chartLabelEl.html('Importers from ' + country.name);
+        },
+        getTargetPosition: function (target) {
+            for (var itemPosition = 0; itemPosition < this.exporterBars.length; itemPosition++) {
+                if(target === this.exporterBars[itemPosition] || target === this.exporterLabels[itemPosition]) {
+                    break;
+                } 
+            }
+
+            return itemPosition;
+        },
+        exportItemHover: function (e) {
+            var itemPosition = this.getTargetPosition(e.currentTarget);
+
+            $(this.exporterBars[itemPosition]).addClass('hover-state fast-transition');
+            $(this.exporterLabels[itemPosition]).addClass('hover-state fast-transition');
+        },
+        exportItemMouseout: function () {
+            this.el.find('.hover-state').removeClass('hover-state');
+            
+        },
+        exportItemClick: function (e) {
+            var itemPosition = this.getTargetPosition(e.currentTarget);
+            var orderedExporters = this.getOrderedExporters();
+
+            var clickedCountry = orderedExporters[itemPosition];
+            this.exportersEl.val(clickedCountry.name);
+            this.exportersEl.trigger("change");
+
         }
 
     };
