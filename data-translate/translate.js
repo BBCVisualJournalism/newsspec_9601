@@ -44,8 +44,8 @@
 					if (exportLabel.match(/\d{4} total/i)) {
 						country.total = data[x][i+1];
 					}
-					else if (exportLabel.match(/^Other$/i)) {
-						country.other = data[x][i+1];
+					else if (exportLabel.match(/^country_OTHER$/i)) {
+						country['country_OTHER'] = data[x][i+1];
 					}
 					else if (!exportLabel.match(/^Top \d{2} total$/i) && !exportLabel.match(/^Overall total$/i)) {
 						country[exportLabel] = data[x][i+1];

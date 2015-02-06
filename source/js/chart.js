@@ -1,4 +1,4 @@
-define(['lib/news_special/bootstrap'], function (news) {
+define(['lib/news_special/bootstrap', 'vocabs'], function (news, vocabs) {
 
     function Chart(el, colors, header) {
         /* REUSABLE ELEMENTS */
@@ -32,9 +32,9 @@ define(['lib/news_special/bootstrap'], function (news) {
             this.addDimensionsToData();
             var markup = this.generateMarkUp(this.data);
             
-            if(this.el.is(':empty')){
+            if (this.el.is(':empty')) {
                 this.el.html(markup);
-            }else{
+            } else {
                 var self = this;
                 this.el.fadeOut(500, function () {
                     self.el.html(markup);
@@ -84,7 +84,7 @@ define(['lib/news_special/bootstrap'], function (news) {
                     var color = this.colors[count % this.colors.length];
                     var valueRounded = Math.round(country.value / 1000000);
                     /* Capitalise other */
-                    var countryName = (country.name === 'other') ? 'Other' : country.name;
+                    var countryName = vocabs[country.name];
 
                     labelsMarkup += '<li style="top: ' + country.labelOffet + 'px;"><strong>' + countryName + '</strong> $' + valueRounded + 'm</li>';
                     barsMarkup += '<div class="chart-bar" style="height: ' + country.barHeight + 'px;background-color: ' + color + '"></div>';

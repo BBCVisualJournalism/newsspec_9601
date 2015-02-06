@@ -57,6 +57,8 @@ if (scaffoldLite) {
                 config.paths.app    = './app';
                 moduleToStartApp    = '<%= pathStatic %>/<%= vocab_dir %>/js/app.js';
             }
+            config.paths = config.paths || {};
+            config.paths.vocabs = './vocabs/<%= vocab_dir %>';
             return {
                 requireConfig: config,
                 moduleToStartApp: moduleToStartApp

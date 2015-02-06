@@ -1,16 +1,17 @@
-define(['lib/news_special/bootstrap', 'data/data', 'chart', 'lib/vendors/bind-polyfill'], function (news, data, Chart) {
+define(['lib/news_special/bootstrap', 'data/data', 'chart', 'vocabs', 'lib/vendors/bind-polyfill'], function (news, data, Chart, vocabs) {
 
     function App() {
         /* REUSABLE PROPERTIES */
         this.el = $('.country-export');
         this.exportersEl = this.el.find('.country--input');
         this.chartLabelEl = this.el.find('.chart--header__long');
+        this.chartExporterTextEl = this.el.find('.chart--mobile-desc');
         this.exporterChartEl = this.el.find('.chart__exporters');
         this.importerChartEl = this.el.find('.chart__importers');
         this.seperatorLineEl = this.el.find('.charts--seperator .exports-line');
 
-        this.exporterChart = new Chart(this.exporterChartEl, ['#cce5e5'], 'Exporters');
-        this.importerChart = new Chart(this.importerChartEl, ['#c3d699', '#95ba4d', '#689c00'], 'Importers');
+        this.exporterChart = new Chart(this.exporterChartEl, ['#cce5e5'], vocabs.header_exporters);
+        this.importerChart = new Chart(this.importerChartEl, ['#c3d699', '#95ba4d', '#689c00'], vocabs.header_importers);
 
 
         /* INIT */
@@ -41,7 +42,7 @@ define(['lib/news_special/bootstrap', 'data/data', 'chart', 'lib/vendors/bind-po
         getOrderedExporters: function () {
             var orderedExporters = [];
             for (var countryName in data) {
-                if (data.hasOwnProperty(countryName) && countryName !== 'other' && countryName !== 'total') {
+                if (data.hasOwnProperty(countryName) && countryName !== 'total') {
                     orderedExporters.push({name: countryName, value: parseInt(data[countryName].total, 10)});
                 }
             }
@@ -51,8 +52,8 @@ define(['lib/news_special/bootstrap', 'data/data', 'chart', 'lib/vendors/bind-po
 
             return orderedExporters;
         },
-        getOrderedImportersFrom: function (countryName) {
-            var countryImporters = data[countryName];
+        getOrderedImportersFrom: function (exporterCountryName) {
+            var countryImporters = data[exporterCountryName];
 
             var orderedImporters = [];
             for (var countryName in countryImporters) {
@@ -61,10 +62,10 @@ define(['lib/news_special/bootstrap', 'data/data', 'chart', 'lib/vendors/bind-po
                 }
             }
             orderedImporters.sort(function (a, b) {
-                if(a.name === 'other') {
+                if (a.name === 'country_OTHER') {
                     return 1;
                 }
-                if (b.name === 'other') {
+                if (b.name === 'country_OTHER') {
                     return -1;
                 }
 
@@ -78,7 +79,7 @@ define(['lib/news_special/bootstrap', 'data/data', 'chart', 'lib/vendors/bind-po
 
             this.exportersEl.empty();
             $.each(orderedExporters, function (count, exporter) {
-                self.exportersEl.append('<option>' + exporter.name + '</option>');
+                self.exportersEl.append('<option value="' + exporter.name + '">' + vocabs[exporter.name] + '</option>');
             });
         },
         updateCharts: function () {
@@ -90,13 +91,16 @@ define(['lib/news_special/bootstrap', 'data/data', 'chart', 'lib/vendors/bind-po
             var orderedImoporters = this.getOrderedImportersFrom(country.name);
             this.importerChart.setData(orderedImoporters).draw();
 
-            this.chartLabelEl.html('Importers from ' + country.name);
+            var chartMobileLabel = vocabs.mobile_importer_header.replace('{COUNTRY_NAME}', vocabs[country.name]);
+            this.chartLabelEl.html(chartMobileLabel);
+
+            this.chartExporterTextEl.html(vocabs[country.name + '_exporter_text']);
         },
         getTargetPosition: function (target) {
             for (var itemPosition = 0; itemPosition < this.exporterBars.length; itemPosition++) {
-                if(target === this.exporterBars[itemPosition] || target === this.exporterLabels[itemPosition]) {
+                if (target === this.exporterBars[itemPosition] || target === this.exporterLabels[itemPosition]) {
                     break;
-                } 
+                }
             }
 
             return itemPosition;
@@ -117,7 +121,7 @@ define(['lib/news_special/bootstrap', 'data/data', 'chart', 'lib/vendors/bind-po
 
             var clickedCountry = orderedExporters[itemPosition];
             this.exportersEl.val(clickedCountry.name);
-            this.exportersEl.trigger("change");
+            this.exportersEl.trigger('change');
 
         }
 

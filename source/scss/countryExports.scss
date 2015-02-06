@@ -7,6 +7,10 @@ $sepWidth: 62px;
 	margin: auto;
 	padding: 13px;
 
+	.chart--mobile-desc{
+		font-size: 1.4em;
+	}
+
 	.country--label{
 		font-size: 2.0em;
 		font-weight: bold;
@@ -42,7 +46,6 @@ $sepWidth: 62px;
 		.chart{
 			height: 470px;
 			float: left;
-			max-width: 300px;
 			width: 100%;
 			position: relative;
 
@@ -214,6 +217,10 @@ $sepWidth: 62px;
 
 @include respondMinMax(720px, false){
 	.country-export{
+
+		.chart--mobile-desc{
+			display: none;
+		}
 
 		.country--input{
 			display: inline-block;
