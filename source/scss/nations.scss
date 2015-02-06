@@ -1,0 +1,81 @@
+.lang_arabic, .lang_urdu{
+	.country-export{
+		.charts{
+
+			.chart{
+				float: right;
+
+				.chart-bars{
+					float: right;
+				}
+			}
+
+			.chart__exporters{
+				padding-left: 36px;
+				text-align: left;
+
+				.chart--labels{
+					right: 0;
+					left: $barWidth + $sepWidth/2;
+
+					li{
+						left: 0;
+						padding-left: 8px; 
+					}
+				}
+
+				.chart--header{
+					text-align: right;
+				}
+
+				.chart-bars{
+					left: $sepWidth/2;
+				}
+
+			}
+			.chart__importers{
+				padding-right: 36px;
+				text-align: right;
+
+				.chart--labels{
+					left: 0;
+					right: $barWidth + $sepWidth/2;
+
+					li{
+						right: 0;
+						padding-right: 8px;
+					}
+				}
+
+				.chart--header{
+					text-align: left;
+				}
+
+				.chart-bars{
+					right: $sepWidth/2;
+					left: initial;
+				}
+			}
+
+			.charts--seperator-outer{
+				.charts--seperator{
+
+					.exports-line{
+						right: 4px;
+						left: initial;
+					}
+
+					.imports-line-top{
+						left: 4px;
+						right: initial;
+					}
+
+					.imports-line-bottom{
+						left: 4px;
+						right: initial;
+					}
+				}
+			}
+		}
+	}
+}
