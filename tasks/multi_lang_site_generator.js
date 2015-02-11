@@ -7,8 +7,12 @@ module.exports = function (grunt) {
 
     var projectFiles = {
         'index.html': 'index.html.tmpl',
-        'index.inc':  'index.inc.tmpl',
-        'test.html':  'test.html.tmpl'
+        'index.inc': 'index.inc.tmpl',
+        'test.html': 'test.html.tmpl',
+        'fact_box/after.inc': 'fact_box/after.inc',
+        'fact_box/before.inc':'fact_box/before.inc',
+        'centering/after.inc': 'centering/after.inc',
+        'centering/before.inc':'centering/before.inc'
     };
 
     // *************************************************************************

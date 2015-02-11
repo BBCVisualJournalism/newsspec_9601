@@ -1,0 +1,22 @@
+{
+    "form_title": "Takwimu za uuzaji nje:",
+    "header_exporters": "Muuzaji",
+    "header_importers": "Taifa",
+    "mobile_importer_header": "Mataifa yanayonunua nguo: {COUNTRY_NAME}",
+    "country_amount": "{B}{COUNTRY}{/B} ${AMOUNT_MILLIONS}m",
+    "country_USA_exporter_text": "Marekani husafirisha idadi kubwa zaidi ya nguo za dola milioni 687 kwa mwaka",
+    "country_GBR_exporter_text": "Uingereza ni ya 2 kwa kuuza nguo nje  za thamani ya dola milioni 602m kwa mwaka",
+    "country_DEU_exporter_text": "Ujerumani ni ya 3 kwa kuuza nguo nje za thamani ya dola milioni 502m",
+    "country_KOR_exporter_text": "Korea Kusini ni ya 4 kwa idadi ya uuzaji wa nguo nje kwa dola milioni 364",
+    "country_NDL_exporter_text": "Uholanzi ni ya 5&#44;iliuza nguo za dola milioni 263m kwa mwaka",
+    "country_BEL_exporter_text": "Ubeljiji ni ya 6 iliuza nguo za dola milioni 189m kwa mwaka",
+    "country_CAN_exporter_text": "Canada ni ya 7 iliuza nguo za dola milioni 185m kwa mwaka",
+    "country_POL_exporter_text": "Poland ni ya 8 iliuza nguo za dola milioni 141m kwa mwaka",
+    "country_ITA_exporter_text": "Italia ni ya 9 iliuza nguo za dola milioni 140m kwa mwaka",
+    "country_JPN_exporter_text": "Japan ni ya 10 iliuza nguo za dola milioni 100m kwa mwaka",
+    "source_info": "Chanzo:UN Comtrade 2013",
+    "country_OTHER_EUR": "Kwengineko Ulaya",
+    "country_OTHER": "Ulaya",
+    "chart_title": "",
+    "chart_source": ""
+}

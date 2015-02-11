@@ -39,8 +39,9 @@ $sepWidth: 62px;
 	}
 
 	.charts{
+		direction: ltr;
 		overflow: hidden;
-		height: 470px;
+		height: 480px;
 		margin-top: 20px;
 
 		.chart{
@@ -86,6 +87,7 @@ $sepWidth: 62px;
 				.chart-bar{
 					transition: all 1.5s ease 0s;
 					margin: 8px 0;
+					outline: 0;
 				}
 			}
 		}
@@ -211,6 +213,12 @@ $sepWidth: 62px;
 
 	.fast-transition {
 		transition: all 0.3s ease 0s !important;
+	}
+
+	.charts--source{
+		display: inline-block;
+		font-size: 1.4em;
+		margin: 20px 0 0 0;
 	}
 }
 

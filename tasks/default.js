@@ -9,4 +9,5 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('default', ['bump', 'generate_shared_config', 'css', 'js', 'html', 'copy:cssFurniture', 'clean:tmpFiles', 'lang_font:default']);
+    grunt.registerTask('defaultNoLang', ['bump', 'generate_shared_config', 'css', 'js', 'html', 'copy:cssFurniture', 'clean:tmpFiles']);
 };

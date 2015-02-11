@@ -23,12 +23,14 @@ module.exports = function (grunt) {
 
     grunt.registerTask('translate', [
         'clean:beforeTranslate',
-        'default',
+        'defaultNoLang',
         'copyRequiredJs',
         'images',
         'multi_lang_site_generator:build_all_other_sites',
         'clean:inlineCss',
         'copy_source',
-        'copy_language_specific_items_from_source'
+        'copy_language_specific_items_from_source',
+        'lang_font:others',
+        'lang_font:default'
     ]);
 };

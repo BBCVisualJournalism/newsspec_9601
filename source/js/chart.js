@@ -85,9 +85,14 @@ define(['lib/news_special/bootstrap', 'vocabs'], function (news, vocabs) {
                     var valueRounded = Math.round(country.value / 1000000);
                     /* Capitalise other */
                     var countryName = vocabs[country.name];
+                    var countryLabel = vocabs['country_amount'].replace('{B}', '<strong>').replace('{/B}', '</strong>');
+                    countryLabel = countryLabel.replace('{COUNTRY}', countryName);
+                    countryLabel = countryLabel.replace('{AMOUNT_MILLIONS}', valueRounded);
 
-                    labelsMarkup += '<li style="top: ' + country.labelOffet + 'px;"><strong>' + countryName + '</strong> $' + valueRounded + 'm</li>';
-                    barsMarkup += '<div class="chart-bar" style="height: ' + country.barHeight + 'px;background-color: ' + color + '"></div>';
+                    var tabIndex = (this.colors.length === 1) ? ' tabindex="' + (count + 2) + '"' : '';
+
+                    labelsMarkup += '<li style="top: ' + country.labelOffet + 'px;">' + countryLabel + '</li>';
+                    barsMarkup += '<div class="chart-bar" style="height: ' + country.barHeight + 'px;background-color: ' + color + '"' + tabIndex + '></div>';
                 
                     count++;
                 }

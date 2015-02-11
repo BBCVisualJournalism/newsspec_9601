@@ -27,18 +27,27 @@ define(['lib/news_special/bootstrap', 'data/data', 'chart', 'vocabs', 'lib/vendo
         this.exporterBars = this.exporterChartEl.find('.chart-bar');
         this.exporterLabels = this.exporterChartEl.find('.chart--labels li');
 
-        this.exporterBars.on('mouseover', this.exportItemHover.bind(this));
-        this.exporterBars.on('mouseout', this.exportItemMouseout.bind(this));
-        this.exporterBars.on('click', this.exportItemClick.bind(this));
-
-        this.exporterLabels.on('mouseover', this.exportItemHover.bind(this));
-        this.exporterLabels.on('mouseout', this.exportItemMouseout.bind(this));
-        this.exporterLabels.on('click', this.exportItemClick.bind(this));
+        this.bindEvents(this.exporterBars);
+        this.bindEvents(this.exporterLabels);
         
     }
 
     App.prototype = {
 
+        bindEvents: function (bindTarget) {
+            bindTarget.on('focus', this.exportItemHover.bind(this));
+            bindTarget.on('mouseover', this.exportItemHover.bind(this));
+            bindTarget.on('mouseout', this.exportItemMouseout.bind(this));
+            bindTarget.on('blur', this.exportItemMouseout.bind(this));
+            bindTarget.on('click', this.exportItemClick.bind(this));
+
+            bindTarget.on('keypress', function (e) {
+                if (e.which === 32 || e.which === 13) {
+                    $(this).trigger('click');
+                    e.preventDefault();
+                }
+            });
+        },
         getOrderedExporters: function () {
             var orderedExporters = [];
             for (var countryName in data) {

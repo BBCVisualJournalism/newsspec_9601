@@ -84,7 +84,7 @@
     "country_FSM": "Micronesia",
     "country_GAB": "Gabon",
     "country_GB1": "Channel Islands",
-    "country_GBR": "United Kingdom",
+    "country_GBR": "UK",
     "country_GEO": "Georgia",
     "country_GGY": "Guernsey",
     "country_GHA": "Ghana",
@@ -256,7 +256,7 @@
     "country_UKR": "Ukraine",
     "country_UMI": "US Outlying Islands",
     "country_URY": "Uruguay",
-    "country_USA": "United States",
+    "country_USA": "US",
     "country_UZB": "Uzbekistan",
     "country_VAT": "Vatican",
     "country_VCT": "St Vincent and the Grenadines",
@@ -295,5 +295,7 @@
     "country_JPN_exporter_text": "Japan is the tenth largest exporter, with $100m exports annually",
     "source_info": "{B}Source:{/B} UN Comtrade, 2013 figs",
     "country_OTHER_EUR": "Other Europe",
-    "country_OTHER": "Other"
+    "country_OTHER": "Other",
+    "chart_title": "Top 10 used clothing exporters and their key markets",
+    "chart_source": "Source: United Nations Comtrade Database, 2013 figures"
 }

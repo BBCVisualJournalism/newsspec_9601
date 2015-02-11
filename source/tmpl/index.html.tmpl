@@ -1,9 +1,10 @@
 <%= include('includes/top.tmpl') %>
 
-    <div class="main">
+    <div class="main lang_<%= vocab_dir %>">
+	    <h2 class="chart--title"><%= chart_title %></h2>
     	<div class="country-export">
 	    	<label for="country" class="country--label"><%= form_title %></label>
-	    	<select name="country" class="country--input">
+	    	<select name="country" class="country--input" tabindex="1">
 	    	</select>
 	    	<p class="chart--mobile-desc">The US is the largest exporter, with $687m exports annually</p>
 	    	<h4 class="chart--header__long">Countries importing from: United Kindom</h4>
@@ -19,6 +20,7 @@
 	    			</div>
 	    		</div>
 	    	</div>
+	    	<span class="charts--source"><%= chart_source %></span>
 	    </div>
     </div>
 
